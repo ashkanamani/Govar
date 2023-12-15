@@ -19,16 +19,20 @@ func signup(w http.ResponseWriter, r *http.Request) {
 			logger.SetPrefix("ERROR ")
 			logger.Println(err, "cannot pasrse file")
 		}
+		logger.Println("22")
 		user := data.User{
 			Name: r.PostFormValue("name"),
 			Email: r.PostFormValue("email"),
 			Password: r.PostFormValue("password"),
 		}
+		logger.Println(user)
+
 		err = user.Create()
 		if err != nil {
 			logger.SetPrefix("ERROR ")
 			logger.Println(err, "cannot pasrse file")
 		}
-		http.Redirect(w, r, "/login", http.StatusFound)
+		w.WriteHeader(200)
+		// http.Redirect(w, r, "/login", http.StatusFound)
 	}
 }

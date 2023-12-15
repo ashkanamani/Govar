@@ -11,7 +11,7 @@ func main() {
 	files := http.FileServer(http.Dir("/public"))
 	mux.Handle("/static/", http.StripPrefix("/static/", files))
 	
-	mux.HandleFunc("/signup/", signup)
+	mux.HandleFunc("/signup", signup)
 
 	
 	server := http.Server{
