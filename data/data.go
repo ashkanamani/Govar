@@ -7,6 +7,7 @@ import (
 	"fmt"
 	_ "github.com/lib/pq"
 	"log"
+	
 )
 
 
@@ -14,7 +15,7 @@ var Db *sql.DB
 
 func init() {
 	var err error 
-	Db, err = sql.Open("postgres", "user=postgres dbname=govar sslmode=disable")
+	Db, err = sql.Open("postgres", "user=postgres password=postgres dbname=govar sslmode=disable")
 	if err != nil {
 		log.Fatal(err)
 	}
